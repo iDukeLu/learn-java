@@ -1,2 +1,2 @@
-# learn-java8
-Learn for Java 8
+# learn-java
+Learn for Java 
