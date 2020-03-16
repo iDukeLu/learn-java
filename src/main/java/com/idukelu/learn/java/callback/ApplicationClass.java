@@ -15,6 +15,7 @@ public class ApplicationClass {
         // 1. 起始函数（应用层）：startMethod()
         // 2. 中间函数（系统层）：middleMethod(callbackMethod())
         // 3. 回调函数（应用层）：callbackMethod()
+
         // 调用链说明：
         // startMethod() -------------|
         //                     middleMethod(callbackMethod())
