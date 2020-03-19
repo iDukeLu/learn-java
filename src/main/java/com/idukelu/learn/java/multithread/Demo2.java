@@ -12,14 +12,8 @@ public class Demo2 {
     }
 
     public static void main(String[] args) {
-        Thread seller1 = new Thread(() -> {
-            sell();
-        });
-
-        Thread seller2 = new Thread(() -> {
-            sell();
-        });
-
+        Thread seller1 = new Thread(Demo2::sell);
+        Thread seller2 = new Thread(Demo2::sell);
         seller1.start();
         seller2.start();
     }
