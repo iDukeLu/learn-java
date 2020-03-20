@@ -3,7 +3,10 @@ package com.idukelu.learn.java.multithread;
 import org.junit.jupiter.api.Test;
 
 /**
- *
+ * 出现异常，锁自动释放
+ * Thread-A 优先抢到锁，并在 5s 后因为异常释放锁
+ * Thread-B 在 Thread-A 启动 0.5s 后启动， 并且一直阻塞等待获取锁
+ * 直到 Thread-A 因为异常释放锁后，Thread-B 抢到锁并执行程序
  */
 public class ThrowExceptionNoLock {
 
