@@ -17,8 +17,6 @@ public class StopThread {
     @Test
     public void interruptThread() throws InterruptedException {
 
-
-
     }
 
     @Test

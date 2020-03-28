@@ -1,5 +1,6 @@
 package com.idukelu.learn.java.multithread;
 
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,7 +12,8 @@ import org.junit.jupiter.api.Test;
 public class ThrowExceptionNoLock {
 
     @Test
-    public void test() throws InterruptedException {
+    @SneakyThrows
+    public void test() {
         ThrowExceptionNoLock throwExceptionNoLock = new ThrowExceptionNoLock();
         Thread threadA = new Thread(throwExceptionNoLock::methodA, "Thread-A");
         Thread threadB = new Thread(throwExceptionNoLock::methodA, "Thread-B");
@@ -28,15 +30,13 @@ public class ThrowExceptionNoLock {
         }
     }
 
+    @SneakyThrows
     private synchronized void methodA() {
         if ("Thread-A".equals(Thread.currentThread().getName())) {
             for (int i = 0; i < 1000; i++) {
                 System.err.println(Thread.currentThread().getName() + " is running....");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Thread.sleep(100);
+
 
                 // 5 s 后抛出异常，迫使线程释放锁
                 if (i == 50) {
@@ -46,11 +46,7 @@ public class ThrowExceptionNoLock {
         } else {
             for (int i = 0; i < 100; i++) {
                 System.err.println(Thread.currentThread().getName() + " is running....");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Thread.sleep(100);
             }
         }
     }
